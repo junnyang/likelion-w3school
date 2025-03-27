@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import "https://kit.fontawesome.com/0c69fdf2c0.js";
+import "https://kit.fontawesome.com/5455b35165.js";
 
 import styled from "styled-components";
 // import "https://www.w3schools.com/w3css/4/w3.css";
 // import "https://fonts.googleapis.com/css?family=Raleway";
-// import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
 import avrtar1 from "./assets/avatar1.png";
 import avrtar2 from "./assets/avatar2.png";
@@ -15,6 +14,7 @@ import avrtar6 from "./assets/avatar6.png";
 import region from "./assets/region.jpg";
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
   var mySidebar = document.getElementById("mySidebar");
 
   // Get the DIV with overlay effect
@@ -22,78 +22,261 @@ function App() {
 
   // Toggle between showing and hiding the sidebar, and add overlay effect
   function w3_open() {
-    if (mySidebar.style.display === "block") {
-      mySidebar.style.display = "none";
-      overlayBg.style.display = "none";
-    } else {
-      mySidebar.style.display = "block";
-      overlayBg.style.display = "block";
-    }
+    setIsOpen(!isOpen);
   }
 
   // Close the sidebar with the close button
   function w3_close() {
-    if (mySidebar) {
-      mySidebar.style.display = "none";
-    }
-    if (overlayBg) {
-      overlayBg.style.display = "none";
-    }
+    setIsOpen(false);
   }
+  const Header_st = styled.div`
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    color: #fff !important;
+    background-color: #000 !important;
+    font-size: 18px !important;
+    top: 0;
+    box-sizing: inherit;
+    display: block;
+    unicode-bidi: isolate;
+    border: none;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+    z-index: 4;
+  `;
+
+  const Header_left = styled.button`
+    padding: 8px 16px;
+    float: left;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    margin: 0;
+    @media (max-width: 992px) {
+      display: block;
+    }
+    @media (min-width: 993px) {
+      display: none;
+    }
+  `;
+
+  const Header_ri = styled.div`
+    padding: 8px 16px;
+    float: left;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+    border: none;
+    white-space: normal;
+    background-color: black;
+    float: right;
+    text-align: center;
+    color: #f1f1f1 !important;
+  `;
+
+  const SideBar_st = styled.div`
+    display: ${(props) => (props.clicked ? "block" : "none")};
+    z-index: 3;
+    width: 300px;
+    color: #000 !important;
+    background-color: #fff !important;
+    animation: animateleft 0.4s;
+    position: fixed !important;
+    overflow: auto;
+    box-sizing: inherit;
+    unicode-bidi: isolate;
+    font-family: "Raleway", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    border: none;
+    height: 100%;
+    overflow: auto;
+    position: fixed !important;
+    padding: 0;
+
+    @media (max-width: 992px) {
+      display: none;
+    }
+    @media (min-width: 993px) {
+      display: block;
+    }
+  `;
+
+  const Low_1 = styled.div`
+    content: "";
+    width: 100%;
+    box-sizing: inherit;
+    display: block;
+    unicode-bidi: isolate;
+    clear: both;
+    padding: 0.01em 16px;
+    border: none;
+    background-color: #fff;
+    height: 61.3px;
+  `;
+
+  const Low_s4 = styled.div`
+    float: left;
+    box-sizing: inherit;
+    display: block;
+    unicode-bidi: isolate;
+    color: #000 !important;
+    font-family: "Raleway", sans-serif;
+    width: 33.33333%;
+    border: none;
+    background-color: #fff;
+    font-size: 15px;
+    line-height: 1.5;
+  `;
+
+  const Low_s8 = styled.div`
+    width: 66.66666%;
+    float: left;
+    overflow: hidden;
+    display: inline-block;
+    border: none;
+    display: block;
+    outline: 0;
+    position: static;
+    white-space: normal;
+    font-family: "Raleway", sans-serif;
+  `;
+
+  const Barbutton = styled.a`
+    white-space: normal;
+    padding: 8px 16px;
+    float: left;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      color: #000 !important;
+      background-color: #ccc !important;
+    }
+  `;
+
+  const Low_con = styled.div`
+    padding: 0.01em 16px;
+    box-sizing: inherit;
+    display: block;
+    unicode-bidi: isolate;
+    color: #000 !important;
+    font-size: 15px;
+    line-height: 1.5;
+    content: "";
+    display: table;
+    clear: both;
+  `;
+
+  const Low_block = styled.div`
+    width: 100%;
+    min-width: 100%;
+    text-align: left;
+    padding: 0;
+    display: block;
+    border: none;
+    white-space: normal;
+    float: none;
+    outline: 0;
+  `;
+
+  const Low_bu = styled.a`
+    width: 100%;
+    display: block;
+    text-align: left;
+    border: none;
+    white-space: normal;
+    float: none;
+    outline: 0;
+    padding: 8px 16px !important;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    font-family: "Raleway", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+  `;
+
+  const Low_bu_blue = styled.a`
+    width: 100%;
+    display: block;
+    text-align: left;
+    border: none;
+    white-space: normal;
+    float: none;
+    outline: 0;
+    padding: 8px 16px !important;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff !important;
+    background-color: #2196f3 !important;
+    font-size: 15px;
+    line-height: 1.5;
+  `;
   return (
     <div className="App">
-      <header
-        className="w3-bar w3-top w3-black w3-large"
-        style={{ zIndex: "4" }}
-      >
-        <button
-          class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
-          onclick={w3_open}
-        >
+      <Header_st>
+        <Header_left onClick={w3_open}>
           <i class="fa fa-bars"></i>
           &nbsp;Menu
-        </button>
-        <span class="w3-bar-item w3-right">Logo</span>
-      </header>
+        </Header_left>
+        <Header_ri>Logo</Header_ri>
+      </Header_st>
 
-      <nav
-        class="w3-sidebar w3-collapse w3-white w3-animate-left"
-        style={{ zIndex: "3", width: "300px;" }}
-        id="mySidebar"
-      >
+      <SideBar_st>
         <br />
-        <div class="w3-container w3-row">
-          <div class="w3-col s4">
+        <Low_1>
+          <Low_s4>
             <img
               src={avrtar2}
               class="w3-circle w3-margin-right"
               style={{ width: "46px" }}
               alt="avrtar2"
             ></img>
-          </div>
-          <div class="w3-col s8 w3-bar">
+          </Low_s4>
+          <Low_s8>
             <span>
               Welcome, <strong>Mike</strong>
             </span>
             <br />
-            <a href="#" class="w3-bar-item w3-button">
+            <Barbutton>
               <i class="fa fa-envelope"></i>
-            </a>
-            <a href="#" class="w3-bar-item w3-button">
+            </Barbutton>
+            <Barbutton>
               <i class="fa fa-user"></i>
-            </a>
-            <a href="#" class="w3-bar-item w3-button">
+            </Barbutton>
+            <Barbutton>
               <i class="fa fa-cog"></i>
-            </a>
-          </div>
-        </div>
+            </Barbutton>
+          </Low_s8>
+        </Low_1>
         <hr />
 
-        <div class="w3-container">
+        <Low_con>
           <h5>Dashboard</h5>
-        </div>
+        </Low_con>
 
-        <div class="w3-bar-block">
+        <Low_block>
           <a
             href="#"
             class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
@@ -105,46 +288,46 @@ function App() {
             <i class="fa fa-remove fa-fw"></i>
             &nbsp; Close Menu
           </a>
-          <a href="#" class="w3-bar-item w3-button w3-padding w3-blue">
+          <Low_bu_blue>
             <i class="fa fa-users fa-fw"></i>
             &nbsp; Overview
-          </a>
-          <a href="#" class="w3-bar-item w3-button w3-padding">
+          </Low_bu_blue>
+          <Low_bu>
             <i class="fa fa-eye fa-fw"></i>
             &nbsp; Views
-          </a>
-          <a href="#" class="w3-bar-item w3-button w3-padding">
+          </Low_bu>
+          <Low_bu>
             <i class="fa fa-users fa-fw"></i>
             &nbsp; Traffic
-          </a>
-          <a href="#" class="w3-bar-item w3-button w3-padding">
+          </Low_bu>
+          <Low_bu>
             <i class="fa fa-bullseye fa-fw"></i>
             &nbsp; Geo
-          </a>
-          <a href="#" class="w3-bar-item w3-button w3-padding">
+          </Low_bu>
+          <Low_bu>
             <i class="fa fa-diamond fa-fw"></i>
             &nbsp; Orders
-          </a>
-          <a href="#" class="w3-bar-item w3-button w3-padding">
+          </Low_bu>
+          <Low_bu>
             <i class="fa fa-bell fa-fw"></i>
             &nbsp; News
-          </a>
-          <a href="#" class="w3-bar-item w3-button w3-padding">
+          </Low_bu>
+          <Low_bu>
             <i class="fa fa-bank fa-fw"></i>
             &nbsp; General
-          </a>
-          <a href="#" class="w3-bar-item w3-button w3-padding">
+          </Low_bu>
+          <Low_bu>
             <i class="fa fa-history fa-fw"></i>
             &nbsp; History
-          </a>
-          <a href="#" class="w3-bar-item w3-button w3-padding">
+          </Low_bu>
+          <Low_bu>
             <i class="fa fa-cog fa-fw"></i>
             &nbsp; Settings
-          </a>
+          </Low_bu>
           <br />
           <br />
-        </div>
-      </nav>
+        </Low_block>
+      </SideBar_st>
 
       <div class="w3-main" style={{ marginLeft: "300px", marginTop: "43px" }}>
         <header class="w3-container" style={{ paddingTop: "22px" }}>
